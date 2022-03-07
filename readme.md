@@ -16,6 +16,8 @@ This ERD example models a simple order system with the following entities:
 Products --> Order_procducts
 * A product colud be a part of <font color="#1ba1e2">no orders</font>, but it also could be a product of many orders, so the relationship from products to order is <font color="#1ba1e2">One to Zero/Many</font>.
 
+<span style="color:orange;">Word up</span>
+
 Order_procducts --> Products
 * An order colud be include one or multiple products, so the realship from odrder to products is <font color="#1ba1e2">One to One</font>.
 
