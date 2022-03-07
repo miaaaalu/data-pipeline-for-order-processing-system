@@ -11,12 +11,12 @@ This ERD example model a simple order system with the following entities:
 ![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/ER_model_diagram.png?raw=true)
 
 
-## Order_procducts Table and Table
+## Order_products Table and Table
 
-Order_procducts --> Products
-* An order line could be included one or multiple products, so the relationship from Order_procducts table to Products table is **One to One**.
+Order_products --> Products
+* An order line could be included one or multiple products, so the relationship from Order_products table to Products table is **One to One**.
 
-Products --> Order_procducts
+Products --> Order_products
 * A product could be a part of **no orders**, but it also could be a product of many orders, so the relationship from products to order is **One to Zero/Many**.
 
 ![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/order_products%20-%20Products.png?raw=true)
@@ -41,13 +41,13 @@ Departments --> Products
 
 ![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/products-departments.png?raw=true)
 
-## Order_procducts and Orders Table
+## Order_products and Orders Table
 
-Order_procducts --> Orders
-* An order can have multiple products; each product will be shown in a separate line (called as OrderLine) in the Order_procducts table. So there can be one or more order lines for a single order, so the relationship from Order_procducts to Orders table is **One to One**.
+Order_products --> Orders
+* An order can have multiple products; each product will be shown in a separate line (called as OrderLine) in the Order_products table. So there can be one or more order lines for a single order, so the relationship from Order_products to Orders table is **One to One**.
 
-Orders --> Order_procducts
-* For each order, there will be one or more order lines in Order_procducts table. However, if an order gets cancelled (destroyed) or any other specific reason, then order lines could not exist in the Order Products table. So the relationship from Orders to Order_procducts is **One to Zero/Many**.
+Orders --> Order_products
+* For each order, there will be one or more order lines in Order_products table. However, if an order gets cancelled (destroyed) or any other specific reason, then order lines could not exist in the Order Products table. So the relationship from Orders to Order_products is **One to Zero/Many**.
 
 ![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/order_products%20-%20orders.png?raw=true)
 
