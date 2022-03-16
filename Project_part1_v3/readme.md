@@ -8,8 +8,7 @@ This ERD example model a simple order system with the following entities:
 * Orders: stores sales orders placed by customers.
 * OrdersProduct: stores order line items for each order.
 
-![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/ER_model_diagram.png?raw=true)
-
+![ER Diagram](Project_part1_v3/er_model_assets/er_model_diagram.png)
 
 ## Order_products Table and Table
 
@@ -19,7 +18,7 @@ Order_products --> Products
 Products --> Order_products
 * A product could be a part of **no orders**, but it also could be a product of many orders, so the relationship from products to order is **One to Zero/Many**.
 
-![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/order_products%20-%20Products.png?raw=true)
+![ER Diagram](Project_part1_v3/er_model_assets/er_model_diagram.png)
 
 ## Products and Aisles Table
 
