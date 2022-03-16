@@ -8,9 +8,9 @@ This ERD example model a simple order system with the following entities:
 * Orders: stores sales orders placed by customers.
 * OrdersProduct: stores order line items for each order.
 
-![ER Diagram](Project_part1_v3/er_model_assets/er_model_diagram.png)
+![ER Diagram](/Project_part1_v3/er_model_assets/er_model_diagram.png)
 
-## Order_products Table and Table
+## Order_products Table and Products Table
 
 Order_products --> Products
 * An order line could be included one or multiple products, so the relationship from Order_products table to Products table is **One to One**.
@@ -18,7 +18,7 @@ Order_products --> Products
 Products --> Order_products
 * A product could be a part of **no orders**, but it also could be a product of many orders, so the relationship from products to order is **One to Zero/Many**.
 
-![ER Diagram](Project_part1_v3/er_model_assets/er_model_diagram.png)
+![ER Diagram](/Project_part1_v3/er_model_assets/order_products%20-%20Products.png)
 
 ## Products and Aisles Table
 
@@ -28,7 +28,7 @@ Products --> Aisles
 Aisles --> Products
 * An aisle could include one or multiple products, so the relationship from aisles to products is **One to One/Many**.
 
-![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/products-aisles.png?raw=true)
+![ER Diagram](/Project_part1_v3/er_model_assets/products-aisles.png)
 
 ## Products and Departments Table 
 
@@ -38,7 +38,7 @@ Products --> Departments
 Departments --> Products
 * A department could include one or multiple products, so the relationship from departments to products is **One to One/Many**.
 
-![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/products-departments.png?raw=true)
+![ER Diagram](/Project_part1_v3/er_model_assets/products-departments.png)
 
 ## Order_products and Orders Table
 
@@ -48,7 +48,7 @@ Order_products --> Orders
 Orders --> Order_products
 * For each order, there will be one or more order lines in Order_products table. However, if an order gets cancelled (destroyed) or any other specific reason, then order lines could not exist in the Order Products table. So the relationship from Orders to Order_products is **One to Zero/Many**.
 
-![ER Diagram](https://github.com/miaaaalu/-Sample-ER-diagram-of-a-order-processing-system/blob/master/er_model_assets/order_products%20-%20orders.png?raw=true)
+![ER Diagram](/Project_part1_v3/er_model_assets/order_products%20-%20orders.png)
 
 # 2. SQL Query from IMBA Data Set
 Design a query to join orders table and order_products table together, filter on eval_set = ‘prior’
