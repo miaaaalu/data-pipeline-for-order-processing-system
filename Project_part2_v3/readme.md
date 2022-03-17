@@ -142,15 +142,14 @@ order_products_prior_seq AS
    FROM order_products_prior
   )
 
-SELECT user_id,
-       product_id,
+SELECT product_id,
        COUNT(reordered) AS count_of_reordered,
        SUM(reordered) AS total_of_reordered,
        COUNT(CASE WHEN PRODUCT_SEQ_TIME = 1 THEN 1 END) AS seq_time_1,
        COUNT(CASE WHEN PRODUCT_SEQ_TIME = 2 THEN 1 END) AS seq_time_2
 FROM order_products_prior_seq
-GROUP BY user_id,PRODUCT_ID
-ORDER BY user_id,PRODUCT_ID
+GROUP BY PRODUCT_ID
+ORDER BY PRODUCT_ID
 LIMIT 10;
 ```
 |USER_ID|PRODUCT_ID|COUNT_OF_REORDERED|TOTAL_OF_REORDERED|SEQ_TIME_1|SEQ_TIME_2|
