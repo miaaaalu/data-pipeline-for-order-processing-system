@@ -16,7 +16,7 @@ AS (
 );
 ```
 
-## **2. Create a SQL query (user_features_1)**
+## **2. user_features_1**
 
 Based on table orders, for each user, calculate 
 * the max order_number
@@ -46,7 +46,7 @@ LIMIT 10;
 |9      |4            |66                           |22                           |
 |10     |6            |109                          |21.8                         |
 
-## **3. Create a SQL query (user_features_2)**
+## **3. user_features_2**
 Similar to above, based on table order_products_prior, for each user calculate
 * the total number of products
 * total number of distinct products
@@ -91,7 +91,7 @@ LIMIT 10;
 |9      |76              |58                       |0.39         |
 |10     |143             |94                       |0.36         |
 
-## **4. Create a SQL query (up_features)**
+## **4. up_features**
 Based on table order_products_prior, for each user and product, calculate 
 * the total number of orders
 * minimum order_number
@@ -124,7 +124,7 @@ LIMIT 10;
 |1      |26088     |2           |1             |2             |4.50                 |
 
 
-## **5. Create a SQL query (prd_features)**
+## **5. prd_features**
 Based on table order_products_prior, first write a sql query to calculate 
 * the sequence of product purchase for each user, 
 * and name it product_seq_time. 
@@ -165,4 +165,3 @@ LIMIT 10;
 |1      |17122     |1                 |0                 |1         |0         |
 |1      |25133     |8                 |7                 |1         |1         |
 |1      |26088     |2                 |1                 |1         |1         |
-
