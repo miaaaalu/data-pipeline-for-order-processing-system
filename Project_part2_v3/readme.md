@@ -100,7 +100,7 @@ Based on table order_products_prior, for each user and product, calculate
 ```sql
 SELECT user_id, 
        product_id,
-       COUNT(DISTINCT order_id) AS total_num_of_orders,
+       COUNT(*) AS total_num_of_orders,
        MIN(order_number) AS min_order_number,
        MAX(order_number) AS max_order_number,
        ROUND(AVG(add_to_cart_order),2) AS avg_add_to_cart_order

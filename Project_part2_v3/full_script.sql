@@ -36,7 +36,7 @@ LIMIT 10;
 --  4. Create a SQL query (up_features). Based on table order_products_prior, for each user and product, calculate the total number of orders, minimum order_number, maximum order_number and average add_to_cart_order.
 SELECT user_id, 
        product_id,
-       COUNT(DISTINCT order_id) AS total_orders,
+       COUNT(*) AS total_num_of_orders,
        MIN(order_number) AS min_ord_num,
        MAX(order_number) AS max_ord_num,
        ROUND(AVG(add_to_cart_order),2) AS avg_add_to_cart_order
