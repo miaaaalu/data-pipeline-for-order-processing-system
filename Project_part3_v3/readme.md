@@ -1,6 +1,6 @@
 # **Project_part3_v3**
 ## Part3 work flow
-![](/Project_part3_v3/assets/data-flow.jpg)
+![](/Project_part3_v3/assets/part3-work-flow.jpg)
 
 ## AWS Glue DataBrew 
 Data Preporcessing by Glue DataBrew. AWS Glue DataBrew is a visual data preparation tool that enables users to clean and normalize data without writing any code. DataBrew is serverless, can explore and transform terabytes of raw data without needing to create clusters or manage any infrastructure.
