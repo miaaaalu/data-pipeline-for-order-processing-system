@@ -43,10 +43,10 @@ Rule for trigger `Glue Job` daily:
 * target: lambda functon (glue-job-etl-daily)
 
 Rule for trigger `Databrew` daily:
-* name: glue-job-etl-daily
+* name: databrew-job-etl-daily
 * Rule type: schedule 
 * pattern: rate expression (fixed rate of day)
-* target: lambda functon (glue-job-etl-daily)
+* target: lambda functon (databrew-job-etl-daily)
 
 > Note:
 >
