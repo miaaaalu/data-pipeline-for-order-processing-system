@@ -14,7 +14,7 @@ The detailed explanations are commented below. Here is the high-level descriptio
 
 ## Glue Job Creation
 
-* Name: test
+* Name: gluejob3.0
 * IAM Role: full access to Glue and S3
 * Type: Spark
 * Editor: Spark script editor
@@ -45,7 +45,7 @@ joinDF = ((up_features.join(prd_feature, "product_id")).join(user_features_1, "u
 
 # LOAD (WRITE DATA)
 singleDF = joinDF.repartition(1)
-singleDF.write.csv("s3://data-lake-bucket-imba/features/gluejobResult", header = "true")
+singleDF.write.mode('overwrite').csv("s3://data-lake-bucket-imba/features/gluejobResult/", header = "true")
 ```
 ![](/Project_part4_v3/assets/gluejobresult.png)
 ![](/Project_part4_v3/assets/result-in-s3.png)
