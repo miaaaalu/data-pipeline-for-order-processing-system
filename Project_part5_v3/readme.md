@@ -5,8 +5,8 @@
 
 High levels in this solution are as follows:
 
-* Create target Lambda functions after databrew project and Glue Job script completion.
-* Schedule AWS Lambda functions using EventBridge, which periodically trigger databrew and Glue Job.
+* Create target `Lambda functions` after `databrew` project and `Glue Job` script completion.
+* Schedule AWS Lambda functions using `EventBridge`, which periodically trigger Lambda.
 
 
 ### Step 1 Create Lambda function 
@@ -53,3 +53,27 @@ Rule for trigger `Databrew` daily:
 > useful link for cron expression if needed future: https://crontab.guru/
 
 ![](/Project_part5_v3/assets/eb-lambda-log.png)
+
+## **Trigger based Architecture**
+![](/Project_part5_v3/assets/trigger-based-flow.jpg)
+
+High levels in this solution are as follows:
+
+* Create target `Lambda functions` after `databrew` project and `Glue Job` script completion.
+* Configure `Event Notification` in S3 to invoke Lambda functions, the trigger invokes your function every time that an object is added to S3 bucket.
+
+### Step 1 Create Lambda function 
+Same as last the step in Schedule based Architecture but with S3 full access
+
+### Step 2 Create Event Notification
+Notification for trigger `Databrew`:
+* name: databrew-etl
+* Prefix: features/order_products_prior/ 
+* Object creation: All object create events
+* Destination: lambda functon (databrew-etl-daily)
+
+Notification for trigger `Glue Job`:
+* name: glue-job-etl
+* Prefix: schedule 
+* Object creation: All object create events
+* Destination: lambda functon (glue-job-etl-daily)
