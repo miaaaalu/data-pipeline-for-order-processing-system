@@ -185,6 +185,7 @@ hyper_grid <-expand.grid(
 
 nthread <- 6
 
+#  Cross-Validation training
 for(i in 1:nrow(hyper_grid)){
   cat(paste0("\nModel ", i, " of ", nrow(hyper_grid), "\n"))
   cat("Hyper-parameters:\n")
@@ -200,3 +201,75 @@ for(i in 1:nrow(hyper_grid)){
                  verbose = T)
   
   model_auc = min(mdcv$evaluation_log$test_auc_mean)}
+
+results_valid <- cbind(hyper_grid, final_valid_metrics)
+
+# descending on AVG_AUC and get the best parameter
+results_valid <- results_valid %>% 
+  arrange(desc(AUC))
+
+################################################
+#########  Final Model
+################################################ 
+
+# reading data by xgboost
+train_data_x <- data.matrix(select(train, -reordered))
+train_data_y <- data.matrix(select(train, reordered))
+train_data <- xgb.DMatrix(data = train_data_x, label = train_data_y)
+test_data <- xgb.DMatrix(as.matrix(test)
+
+model_pos <- 1
+set.seed(1)
+
+# training model 
+model <- xgb.train(
+  data =                      train_data,
+  
+  nrounds =                   cv.nround,
+  max_depth =                 results_valid[model_pos, "max_depth"],
+  eta =                       results_valid[model_pos, "eta"],
+  gamma =                     results_valid[model_pos, "gamma"],
+  colsample_bytree =          results_valid[model_pos, "colsample_bytree"],
+  subsample =                 results_valid[model_pos, "subsample"],
+  min_child_weight =          results_valid[model_pos, "min_child_weight"],
+  alpha =                     results_valid[model_pos, "alpha"],
+  lambda =                    results_valid[model_pos, "lambda"],
+  scale_pos_weight =          results_valid[model_pos, "scale_pos_weight"],
+  
+  booster =                   "gbtree",
+  objective =                 "binary:logistic",
+  eval_metric =               "auc",
+  prediction =                TRUE,
+  verbose =                   TRUE,
+  watchlist =                 watchlist,
+  print_every_n =             10,
+  nthread =                   nthread
+)
+
+# make a prediction on the training dataset
+pred_train_data <- predict(model, newdata = train_data_x)
+# check the performance of the model on training dataset
+train_performance <- roc(as.vector(train_data_y), pred_train_data)
+
+# plot ROC curve and precision-recall curve
+precrec_obj <- evalmod(scores = pred_train_data, labels = as.vector(train_data_y))
+autoplot(precrec_obj)
+
+
+test$reordered <- predict(model, newdata = test_data)
+test$reordered <- (test$reordered > 0.21) * 1
+
+submission <- test %>%
+  filter(reordered == 1) %>%
+  group_by(order_id) %>%
+  summarise(
+    products = paste(product_id, collapse = " ")
+  )
+
+missing <- data.frame(
+  order_id = unique(test$order_id[!test$order_id %in% submission$order_id]),
+  products = "None"
+)
+
+submission <- submission %>% bind_rows(missing) %>% arrange(order_id)
+write.csv(submission, file = "submit.csv", row.names = F)
