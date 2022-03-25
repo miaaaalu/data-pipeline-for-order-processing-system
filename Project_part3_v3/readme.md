@@ -1,5 +1,13 @@
 # **Project_part3_v3**
-## Part3 work flow
+## work flow
+Business Requirement:
+
+Factors that effect user behaviour to be created (Assume from DS team)
+1. user (user_feature_1, user_feature_2)
+2. product (prd_features)
+3. preference = user + product (up_features)
+
+High levels in Solution:
 ![](/Project_part3_v3/assets/part3-work-flow.jpg)
 
 ## AWS Glue DataBrew 
